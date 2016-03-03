@@ -1,0 +1,13 @@
+*.c diff=cpp text=auto whitespace=trailing-space,space-before-tab,tab-in-indent
+*.h diff=cpp text=auto whitespace=trailing-space,space-before-tab,tab-in-indent
+*.S text=auto whitespace=trailing-space,space-before-tab,tab-in-indent
+*.inc text=auto whitespace=trailing-space,space-before-tab,tab-in-indent
+Makefile text=auto whitespace=trailing-space,space-before-tab
+*.mk text=auto whitespace=trailing-space,space-before-tab,
+sources text=auto whitespace=trailing-space,space-before-tab
+*.sh text=auto whitespace=trailing-space,space-before-tab,tab-in-indent
+*.py text=auto whitespace=trailing-space,space-before-tab,tab-in-indent
+*.asl text=auto whitespace=trailing-space,space-before-tab,tab-in-indent
+*.y text=auto whitespace=trailing-space,space-before-tab,tab-in-indent
+*.l text=auto whitespace=trailing-space,space-before-tab,tab-in-indent
+common text=auto whitespace=trailing-space,space-before-tab

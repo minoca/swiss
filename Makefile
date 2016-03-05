@@ -143,9 +143,7 @@ endif
 ##
 
 ifeq ($(OS),Windows_NT)
-ifeq (build,$(BINARYTYPE))
 BINARY := $(BINARY).exe
-endif
 endif
 
 ##

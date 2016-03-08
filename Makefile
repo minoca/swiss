@@ -279,6 +279,7 @@ SWISS_COMMON_OBJS := \
     $(SWISS)/mktemp.o \
     $(SWISS)/mv.o \
     $(SWISS)/nl.o \
+    $(SWISS)/nproc.o \
     $(SWISS)/od.o \
     $(SWISS)/printf.o \
     $(SWISS)/ps.o \

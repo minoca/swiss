@@ -12,3 +12,20 @@
 
 [diff "cpp"]
 	xfuncname = "!^[ \t]*[A-Za-z_][A-Za-z_0-9]*:[[:space:]]*($|/[/*])\n!:$\n^((::[[:space:]]*)?[A-Za-z_].*)$"
+
+[grep]
+	linenumber = true
+
+##
+## Always rebase when pulling, since we don't like merge commits.
+##
+
+[pull]
+	rebase = true
+
+##
+## Show the nice stat graph when doing git pull, which now defaults to rebase.
+##
+
+[rebase]
+	stat = true

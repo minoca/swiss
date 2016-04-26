@@ -1802,33 +1802,32 @@ Return Value:
 
     UINTN AlignedSize;
     PHEAP_CHUNK Chunk;
-    UINTN ConservativeAlignedSize;
     UINTN DoublePrevious;
     UINTN Footprint;
     PCHAR Memory;
+    UINTN Minimum;
     PCHAR OldBase;
     PHEAP_CHUNK Replacement;
     UINTN ReplacementSize;
     PHEAP_SEGMENT Segment;
+
+    if (Heap->AllocateFunction == NULL) {
+        return NULL;
+    }
 
     //
     // Directly allocate large chunks, but only if the heap is already
     // initialized.
     //
 
-    if ((Heap->AllocateFunction != NULL) &&
-        (Size >= Heap->DirectAllocationThreshold) &&
-        (Heap->TopSize != 0)) {
-
+    if ((Size >= Heap->DirectAllocationThreshold) && (Heap->TopSize != 0)) {
         Memory = RtlpHeapAllocateDirect(Heap, Size, Tag);
         if (Memory != NULL) {
             return Memory;
         }
     }
 
-    AlignedSize = ALIGN_RANGE_UP(Size + HEAP_EXPANSION_PADDING,
-                                 Heap->ExpansionGranularity);
-
+    AlignedSize = Size + HEAP_EXPANSION_PADDING;
     if (AlignedSize < Heap->MinimumExpansionSize) {
         AlignedSize = Heap->MinimumExpansionSize;
     }
@@ -1846,7 +1845,7 @@ Return Value:
     // expansions. Don't go over the footprint limit that way though.
     //
 
-    ConservativeAlignedSize = AlignedSize;
+    Minimum = ALIGN_RANGE_UP(AlignedSize, Heap->ExpansionGranularity);
     DoublePrevious = Heap->PreviousExpansionSize << 1;
     if ((AlignedSize < DoublePrevious) &&
         ((Heap->FootprintLimit == 0) ||
@@ -1854,6 +1853,8 @@ Return Value:
 
         AlignedSize = DoublePrevious;
     }
+
+    AlignedSize = ALIGN_RANGE_UP(AlignedSize, Heap->ExpansionGranularity);
 
     //
     // Avoid exceeding the footprint limit.
@@ -1869,19 +1870,27 @@ Return Value:
     }
 
     //
-    // Ask the system for more memory. If the doubling effort failed, fall
-    // back to the original aligned size.
+    // Ask the system for more memory. If the doubling effort failed, divide by
+    // 2 until something is found or the minimum fails as well.
     //
 
     Memory = NULL;
-    if (Heap->AllocateFunction != NULL) {
+    while (TRUE) {
+
+        ASSERT(AlignedSize >= Minimum);
+
         Memory = Heap->AllocateFunction(Heap, AlignedSize, Heap->AllocationTag);
-        if (Memory == NULL) {
-            AlignedSize = ConservativeAlignedSize;
-            Memory = Heap->AllocateFunction(Heap,
-                                            AlignedSize,
-                                            Heap->AllocationTag);
+        if (Memory != NULL) {
+            break;
         }
+
+        if (AlignedSize <= Minimum) {
+            break;
+        }
+
+        AlignedSize >>= 1;
+        AlignedSize = ALIGN_RANGE_UP(AlignedSize,
+                                     Heap->ExpansionGranularity);
     }
 
     if (Memory != NULL) {

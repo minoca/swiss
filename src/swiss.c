@@ -13,8 +13,8 @@ Module Name:
 
 Abstract:
 
-    This module implements the Swiss Army Knife utility, which contains many of
-    the standard commands packaged into one binary.
+    This module implements the Swiss utility, which contains many of the
+    standard commands packaged into one binary.
 
 Author:
 
@@ -85,8 +85,7 @@ main (
 
 Routine Description:
 
-    This routine implements the main entry point for the Swiss Army Knife
-    application.
+    This routine implements the main entry point for the Swiss utility.
 
 Arguments:
 

@@ -1,6 +1,6 @@
 # Swiss -- Unix-in-a-box on Windows
 
-Swiss is a Unix multitool that runs on Windows and Minoca. It is a single portable binary that contains many of the basic core POSIX utilities, including a Bourne shell (sh), cp, mv, sed, and many more.
+Swiss is a Unix multitool that runs on Windows and Minoca OS. It is a single binary that contains many of the basic core POSIX utilities, including a Bourne shell (sh), cp, mv, sed, and many more.
 
 ### Installation
 No installation is necessary. The entire release is a single executable, and it makes no registry changes. Simply run `swiss.exe sh` to fire up a shell. The swiss sh shell knows how to execute the other applications built into the binary. To specialize swiss into a particular utility, simply rename swiss.exe to that utility. For instance, copy `swiss.exe` to `sed.exe`, and it will always act directly as sed when run.
@@ -58,6 +58,7 @@ swiss.exe sh -c 'for app in `swiss.exe --list`; do cp -pv swiss.exe $app.exe ; d
 * rm
 * rmdir
 * sed
+* seq
 * sh (Bourne shell compatible)
 * sleep
 * sort

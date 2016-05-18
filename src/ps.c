@@ -883,7 +883,7 @@ Return Value:
             break;
 
         case 'V':
-            SwPrintVersion(PS_VERSION_MAJOR, PS_VERSION_MINOR, REVISION);
+            SwPrintVersion(PS_VERSION_MAJOR, PS_VERSION_MINOR);
             return 1;
 
         case 'h':

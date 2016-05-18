@@ -138,8 +138,6 @@ Return Value:
         // Get rid of any leading slashes in the component.
         //
 
-        assert(ComponentSize > 1);
-
         while ((ComponentSize != 0) && (*Component == '/')) {
             Component += 1;
             ComponentSize -= 1;

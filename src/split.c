@@ -294,7 +294,7 @@ Return Value:
             break;
 
         case 'V':
-            SwPrintVersion(SPLIT_VERSION_MAJOR, SPLIT_VERSION_MINOR, REVISION);
+            SwPrintVersion(SPLIT_VERSION_MAJOR, SPLIT_VERSION_MINOR);
             return 1;
 
         case 'h':

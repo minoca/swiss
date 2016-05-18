@@ -443,7 +443,7 @@ Return Value:
             break;
 
         case 'V':
-            SwPrintVersion(NL_VERSION_MAJOR, NL_VERSION_MINOR, REVISION);
+            SwPrintVersion(NL_VERSION_MAJOR, NL_VERSION_MINOR);
             return 1;
 
         case 'H':

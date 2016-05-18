@@ -78,7 +78,7 @@ BUILD_STRING ?= "($(USERNAME))"
 ## Includes directory.
 ##
 
-INCLUDES += $(SRCROOT)/include;$(SRCROOT)/rtl;
+INCLUDES += $(SRCROOT)/include;$(SRCROOT)/rtl;$(SRCROOT)/src;
 ifeq ($(OS),Windows_NT)
 INCLUDES += $(SRCROOT)/libc/wincsup/include
 endif
@@ -291,6 +291,7 @@ SWISS_COMMON_OBJS := \
     $(SWISS)/sed/sedfunc.o \
     $(SWISS)/sed/sedparse.o \
     $(SWISS)/sed/sedutil.o \
+    $(SWISS)/seq.o \
     $(SWISS)/sh/alias.o \
     $(SWISS)/sh/arith.o \
     $(SWISS)/sh/builtin.o \

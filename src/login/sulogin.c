@@ -226,10 +226,7 @@ Return Value:
             break;
 
         case 'V':
-            SwPrintVersion(SULOGIN_VERSION_MAJOR,
-                           SULOGIN_VERSION_MINOR,
-                           REVISION);
-
+            SwPrintVersion(SULOGIN_VERSION_MAJOR, SULOGIN_VERSION_MINOR);
             return 1;
 
         case 'H':

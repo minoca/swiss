@@ -40,6 +40,7 @@ Environment:
 #include <string.h>
 
 #include "../swlib.h"
+#include "version.h"
 
 //
 // ---------------------------------------------------------------- Definitions
@@ -272,24 +273,20 @@ Return Value:
 VOID
 SwPrintVersion (
     ULONG MajorVersion,
-    ULONG MinorVersion,
-    ULONG Revision
+    ULONG MinorVersion
     )
 
 /*++
 
 Routine Description:
 
-    This routine prints an application version number in the form:
-        "<appname> version M.mm\n".
+    This routine prints an application version number.
 
 Arguments:
 
     MajorVersion - Supplies the major version number.
 
     MinorVersion - Supplies the minor version number.
-
-    Revision - Supplies the revision number.
 
 Return Value:
 
@@ -300,15 +297,45 @@ Return Value:
 {
 
     printf("Minoca %s version %d.%d.%d\n"
-           "Built on %s\n"
-           "Copyright (c) 2013-2016 Minoca Corp. All Rights Reserved.\n\n",
+           "%s\n"
+           "Copyright (c) 2013-2016 Minoca Corp. %s\n\n",
            SwCurrentApplication,
            MajorVersion,
            MinorVersion,
-           Revision,
-           BUILD_TIME_STRING);
+           VERSION_SERIAL,
+           VERSION_BUILD_STRING,
+           VERSION_LICENSE);
 
     return;
+}
+
+INT
+SwGetSerialVersion (
+    VOID
+    )
+
+/*++
+
+Routine Description:
+
+    This routine returns the serial version number, an ever-increasing version
+    number with each revision.
+
+Arguments:
+
+    MajorVersion - Supplies the major version number.
+
+    MinorVersion - Supplies the minor version number.
+
+Return Value:
+
+    Returns the serial version number.
+
+--*/
+
+{
+
+    return VERSION_SERIAL;
 }
 
 INT

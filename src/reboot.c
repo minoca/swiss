@@ -169,10 +169,7 @@ Return Value:
             break;
 
         case 'V':
-            SwPrintVersion(REBOOT_VERSION_MAJOR,
-                           REBOOT_VERSION_MINOR,
-                           REVISION);
-
+            SwPrintVersion(REBOOT_VERSION_MAJOR, REBOOT_VERSION_MINOR);
             return 1;
 
         case 'h':

@@ -25,29 +25,29 @@ Author:
 #define VERSION_MINOR 0
 #define VERSION_REVISION 0
 #define VERSION_RELEASE SystemReleaseFinal
-#define VERSION_SERIAL 1416
-#define VERSION_BUILD_STRING "0fbdd5e May 20 2016 10:56:02"
+#define VERSION_SERIAL 1418
+#define VERSION_BUILD_STRING "e85b4a1 May 20 2016 11:22:26"
 
-#define VERSION_BUILD_TIME 485459762
-#define VERSION_BUILD_TIME_STRING "May 20 2016 10:56:02"
+#define VERSION_BUILD_TIME 485461346
+#define VERSION_BUILD_TIME_STRING "May 20 2016 11:22:26"
 
 //
 // The full commit number string.
 //
 
-#define VERSION_COMMIT_STRING "0fbdd5efeaf2e2e88cbd93232fff865557819fb7"
+#define VERSION_COMMIT_STRING "e85b4a1807d0cba4f03fd6460d4a89794f0467d9"
 
 //
 // The abbreviated commit number string.
 //
 
-#define VERSION_COMMIT_ABBREVIATED "0fbdd5e"
+#define VERSION_COMMIT_ABBREVIATED "e85b4a1"
 
 //
 // An integer of the first 32 bits of the commit.
 //
 
-#define VERSION_COMMIT_NUMBER 0x0fbdd5ef
+#define VERSION_COMMIT_NUMBER 0xe85b4a18
 
 //
 // The current branch name.

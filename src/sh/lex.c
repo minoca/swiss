@@ -1396,7 +1396,7 @@ Return Value:
     size_t BytesToRead;
     PSHELL_LEXER_STATE Lexer;
     PSTR NewInputBuffer;
-    UINTN NewInputBufferSize;
+    ULONG NewInputBufferSize;
     BOOL Result;
 
     Lexer = &(Shell->Lexer);

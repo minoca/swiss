@@ -231,7 +231,7 @@ RTL_BASE_OBJS += \
 endif
 
 ifeq ($(ARCH),x64)
-RTL_BASE_OBJS +=
+RTL_BASE_OBJS += \
     $(RTL_BASE)/x64/rtlarch.o \
     $(RTL_BASE)/x64/rtlmem.o
 
@@ -380,7 +380,7 @@ OBJS := $(TERMLIB_OBJS) \
         $(RTLC_OBJS) \
         $(SWISS_COMMON_OBJS) \
         $(SWISS_UOS_OBJS) \
-        $(SWISS)/uoscmds.o \
+        $(SWISS)/uos/uoscmds.o \
         $(SWISS)/swlib/linux.o
 
 LIBS += -ldl -lutil
@@ -402,6 +402,7 @@ OBJDIRS := \
     $(SWISS)/sed \
     $(SWISS)/sh \
     $(SWISS)/swlib \
+    $(SWISS)/uos \
     $(SWISS)/win32
 
 ##

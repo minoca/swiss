@@ -13,7 +13,7 @@ Abstract:
 
 Author:
 
-    Minoca Build 18-May-2016
+    Minoca Build 20-May-2016
 
 --*/
 
@@ -25,29 +25,29 @@ Author:
 #define VERSION_MINOR 0
 #define VERSION_REVISION 0
 #define VERSION_RELEASE SystemReleaseFinal
-#define VERSION_SERIAL 1412
-#define VERSION_BUILD_STRING "9124ccb May 18 2016 10:56:22"
+#define VERSION_SERIAL 1416
+#define VERSION_BUILD_STRING "0fbdd5e May 20 2016 10:56:02"
 
-#define VERSION_BUILD_TIME 485286982
-#define VERSION_BUILD_TIME_STRING "May 18 2016 10:56:22"
+#define VERSION_BUILD_TIME 485459762
+#define VERSION_BUILD_TIME_STRING "May 20 2016 10:56:02"
 
 //
 // The full commit number string.
 //
 
-#define VERSION_COMMIT_STRING "9124ccb935d5ba86680f05c0fd6250fb3ef518a9"
+#define VERSION_COMMIT_STRING "0fbdd5efeaf2e2e88cbd93232fff865557819fb7"
 
 //
 // The abbreviated commit number string.
 //
 
-#define VERSION_COMMIT_ABBREVIATED "9124ccb"
+#define VERSION_COMMIT_ABBREVIATED "0fbdd5e"
 
 //
 // An integer of the first 32 bits of the commit.
 //
 
-#define VERSION_COMMIT_NUMBER 0x9124ccb9
+#define VERSION_COMMIT_NUMBER 0x0fbdd5ef
 
 //
 // The current branch name.

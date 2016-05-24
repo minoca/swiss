@@ -124,6 +124,9 @@ Important Makefile variables:
 * `OS` - Target build OS. Should be automatically detected. Valid choices are Windows_NT, Minoca, and Linux. Linux support is experimental, if you run Swiss on Linux please report your findings.
 * `ARCH` - Build architecture. Automatically detected, can be forced (in conjunction with CC) for cross-compilation.
 
+### License
+Swiss is licensed under GPLv3. Alternate licensing arrangements are available, contact us (below) for details. See the LICENSE file for complete information.
+
 ### Contact
 
 Send questions or comments to info AT minocacorp DOT com.

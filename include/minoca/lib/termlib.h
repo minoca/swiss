@@ -173,6 +173,38 @@ typedef enum _TERMINAL_KEY {
 
 Structure Description:
 
+    The following structures support ANSI escape characters for storage terminals
+
+--*/ 
+typedef enum _TERMINAL_ANSI_FONTCOLOR {
+    TerminalAnsiFontBlack = 30,
+    TerminalAnsiFontRed,
+    TerminalAnsiFontGreen,
+    TerminalAnsiFontYellow,
+    TerminalAnsiFontBlue,
+    TerminalAnsiFontPurple,
+    TerminalAnsiFontCyan,
+    TerminalAnsiFontWhite,
+    TerminalAnsiBgBlack = 40,
+    TerminalAnsiBgRed,
+    TerminalAnsiBgGreen,
+    TerminalAnsiBgYellow,
+    TerminalAnsiBgBlue,
+    TerminalAnsiBgPurple,
+    TerminalAnsiBgCyan,
+    TerminalAnsiBgWhite,
+} TERMINAL_ANSI_COLOR, *PTERMINAL_ANSI_COLOR;
+
+// 
+// Defining Terminal ANSI Escape Constants
+//
+#define TERMINAL_ANSI_ATTR_RESET "\e[0m"
+
+
+/*++
+
+Structure Description:
+
     This structure stores the state for parsing or generating a terminal
     command.
 

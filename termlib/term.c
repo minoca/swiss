@@ -1028,7 +1028,7 @@ Return Value:
     printf(__GetAttr(param));
     va_start(args, fmt);
     n = vprintf(fmt, args);
-    printf(TERMINAL_ANSI_ATTR_RESET);
+    printf(TERMINAL_ANSI_ATTR_END);
     va_end(args);
 
     return n;

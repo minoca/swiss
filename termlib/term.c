@@ -36,6 +36,7 @@ Environment:
 #include <minoca/lib/status.h>
 #include <minoca/lib/rtl.h>
 #include <minoca/lib/termlib.h>
+#include "swlib.h"
 
 //
 // ---------------------------------------------------------------- Definitions
@@ -983,5 +984,53 @@ Return Value:
     }
 
     return TRUE;
+}
+
+// Auxiliary macro function
+// Begin
+#define __OfAttr(x) ({ \
+    INT _c2 = x;       \
+    _c2;               \
+})
+
+#define __GetAttr(x) ({                  \
+    CHAR _c1[6];                         \
+    sprintf(_c1, "\e[%dm", __OfAttr(x)); \
+    _c1;                                 \
+})
+// End
+
+INT
+PrintColorChar(
+    TERMINAL_ANSI_COLOR param,
+    const char *fmt, ...
+) 
+/*++
+Routine Description:
+
+    Print characters with colors or backgrounds
+
+Arguments:
+    param - TERMINAL_ANSI-COLOR enum value
+
+    fmt - Format string
+
+    ... - Format string parameters
+
+Return Value:
+
+    Return the number of printed characters
+--*/
+{
+    int n;
+    va_list args;
+
+    printf(__GetAttr(param));
+    va_start(args, fmt);
+    n = vprintf(fmt, args);
+    printf(TERMINAL_ANSI_ATTR_END);
+    va_end(args);
+
+    return n;
 }
 

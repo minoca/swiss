@@ -173,6 +173,59 @@ typedef enum _TERMINAL_KEY {
 
 Structure Description:
 
+    The following structures support ANSI escape characters for storage terminals
+
+--*/ 
+typedef enum _TERMINAL_ANSI_FONTCOLOR {
+    TerminalAnsiFontBlack = 30,
+    TerminalAnsiFontRed,
+    TerminalAnsiFontGreen,
+    TerminalAnsiFontYellow,
+    TerminalAnsiFontBlue,
+    TerminalAnsiFontPurple,
+    TerminalAnsiFontCyan,
+    TerminalAnsiFontWhite,
+    TerminalAnsiBgBlack = 40,
+    TerminalAnsiBgRed,
+    TerminalAnsiBgGreen,
+    TerminalAnsiBgYellow,
+    TerminalAnsiBgBlue,
+    TerminalAnsiBgPurple,
+    TerminalAnsiBgCyan,
+    TerminalAnsiBgWhite,
+} TERMINAL_ANSI_COLOR, *PTERMINAL_ANSI_COLOR;
+
+// 
+// Defining Terminal ANSI Escape Constants
+//
+#define TERMINAL_ANSI_ATTR_RESET                "\e[0m"
+#define TERMINAL_ANSI_ATTR_END                  TERMINAL_ANSI_ATTR_RESET
+#define TERMINAL_ANSI_ATTR_BOLD                 "\e[1m"
+#define TERMINAL_ANSI_ATTR_WEAKEN               "\e[2m"
+#define TERMINAL_ANSI_ATTR_ITALIC               "\e[3m"
+#define TERMINAL_ANSI_ATTR_ULINE                "\e[4m"
+#define TERMINAL_ANSI_ATTR_FLICKER              "\e[5m"
+#define TERMINAL_ANSI_ATTR_FFLICKER             "\e[6m"
+#define TERMINAL_ANSI_ATTR_REVER                "\e[7m"
+#define TERMINAL_ANSI_ATTR_HIDDEN               "\e[8m"
+#define TERMINAL_ANSI_ATTR_DELETE               "\e[9m"
+#define TERMINAL_ANSI_ATTR_DEFAULT              "\e[10m"
+#define TERMINAL_ANSI_ATTR_                     "\e[20m"
+#define TERMINAL_ANSI_ATTR_END_BOLD_ULINE       "\e[21m"
+#define TERMINAL_ANSI_ATTR_NORMAL               "\e[22m"
+#define TERMINAL_ANSI_ATTR_NON_ITALIC           "\e[23m"
+#define TERMINAL_ANSI_ATTR_END_ULINE            "\e[24m"
+#define TERMINAL_ANSI_ATTR_END_FLICKER          "\e[25m"
+#define TERMINAL_ANSI_ATTR_END_REVER            "\e[27m"
+#define TERMINAL_ANSI_ATTR_END_HIDDEN           "\e[28m"
+#define TERMINAL_ANSI_ATTR_END_DELETE           "\e[29m"
+#define TERMINAL_ANSI_ATTR_OLINE                "\e[53m"
+#define TERMINAL_ANSI_ATTR_END_OLINE            "\e[55m"
+
+/*++
+
+Structure Description:
+
     This structure stores the state for parsing or generating a terminal
     command.
 

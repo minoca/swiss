@@ -31,8 +31,9 @@ Environment:
 
 #include <minoca/lib/types.h>
 
-#include "swlib.h"
+#include <ctype.h>
 #include <string.h>
+#include "swlib.h"
 
 //
 // ---------------------------------------------------------------- Definitions
@@ -128,6 +129,8 @@ Return Value:
     CONSOLE_COLOR ForegroundColor;
     BOOL PrintTrailingNewline;
     CHAR Value;
+    CHAR ValueBase;
+    CHAR DigitValue;
     BOOL WasBackslash;
 
     EscapeProcessing = FALSE;
@@ -216,6 +219,8 @@ Return Value:
 
         } else {
             Value = 0;
+            ValueBase = 8;
+            DigitValue = 0;
             DigitCount = 0;
             WasBackslash = FALSE;
             ArgumentLength = strlen(Argument);
@@ -229,13 +234,22 @@ Return Value:
                 // If a \0 was detected, then this is in the process of
                 // working through \0NNN, where NNN is one to three octal
                 // characters.
+                // If a \x was detected, then this is in the process of
+                // working through \0HH, where HH is one to two hexadecimal
+                // characters.
                 //
 
                 if (DigitCount != 0) {
-                    if ((Character >= '0') && (Character <= '7')) {
-                        Value = (Value * 8) + (Character - '0');
+                    DigitValue = Character - '0';
+                    if ((ValueBase == 16) && (DigitValue >= 10)) {
+                        DigitValue = tolower(Character) - 'a' + 10;
+                    }
+
+                    if ((DigitValue >= 0) && (DigitValue < ValueBase)) {
+                        Value = (Value * ValueBase) + DigitValue;
                         DigitCount += 1;
-                        if (DigitCount == 4) {
+                        if ((DigitCount == 4) ||
+                            (CharacterIndex + 1 == ArgumentLength)) {
                             DigitCount = 0;
                             SwPrintInColor(BackgroundColor,
                                            ForegroundColor,
@@ -256,16 +270,23 @@ Return Value:
                     //
 
                     } else {
+                        if ((ValueBase == 16) && (DigitCount == 2)) {
+                            SwPrintInColor(BackgroundColor,
+                                           ForegroundColor,
+                                           "\\x");
+                        } else {
+                            SwPrintInColor(BackgroundColor,
+                                           ForegroundColor,
+                                           "%c",
+                                           Value);
+                        }
                         DigitCount = 0;
-                        SwPrintInColor(BackgroundColor,
-                                       ForegroundColor,
-                                       "%c",
-                                       Value);
                     }
                 }
 
                 if (WasBackslash != FALSE) {
                     if (Character == 'a') {
+                        SwPrintInColor(BackgroundColor, ForegroundColor, "\a");
 
                     } else if (Character == 'b') {
                         SwPrintInColor(BackgroundColor, ForegroundColor, "\b");
@@ -291,7 +312,21 @@ Return Value:
 
                     } else if (Character == '0') {
                         Value = 0;
+                        ValueBase = 8;
                         DigitCount = 1;
+
+                    //
+                    // GNU extension to POSIX: '\e' and '\xHH'
+                    //
+
+                    } else if (Character == 'e') {
+                        SwPrintInColor(BackgroundColor, ForegroundColor, "\e");
+
+                    } else if ((Character == 'x') &&
+                               (CharacterIndex + 1 < ArgumentLength)) {
+                        Value = 0;
+                        ValueBase = 16;
+                        DigitCount = 2;
 
                     } else {
 

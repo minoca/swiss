@@ -59,7 +59,7 @@ DEBUG ?= chk
 CURDIR := $(subst \,/,$(CURDIR))
 SRCROOT ?= $(CURDIR)
 SRCROOT := $(subst \,/,$(SRCROOT))
-OUTROOT := $(SRCROOT)/out
+OUTROOT ?= $(SRCROOT)/out
 
 VPATH := $(SRCROOT)
 
